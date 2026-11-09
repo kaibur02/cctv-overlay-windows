@@ -1,0 +1,24 @@
+# Build artefacts
+build/
+*.exe
+*.pdb
+libmpv-2.dll
+
+# Local configuration and secrets - NEVER commit
+config.ini
+secrets.ini
+*.local.ini
+.env
+.env.*
+answers.txt
+
+# Runtime artefacts
+*.log
+*.tmp
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+desktop.ini

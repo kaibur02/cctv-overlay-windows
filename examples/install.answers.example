@@ -1,0 +1,61 @@
+# Answers for unattended installation: install.cmd --answers FILE --yes
+#
+# KEY = value, one per line. Lines starting with # are ignored. Anything left out uses the default shown.
+# NEVER put a password here (the installer refuses keys containing PASS, SECRET or TOKEN).
+# The user sets the password themselves with: install.cmd --set-password
+
+# Keep an existing %APPDATA%\cctv-overlay\config.ini (no) or replace it after a backup (yes).
+OVERWRITE_CONFIG = no
+
+# Download libmpv (the video engine, ~30 MB) from github.com/shinchiro/mpv-winbuild-cmake (yes), or use a local
+# copy with MPV_DLL. UPDATE_MPV = yes replaces an already installed libmpv with the latest build.
+DOWNLOAD_MPV = yes
+# MPV_DLL = C:\Downloads\libmpv-2.dll
+UPDATE_MPV = no
+
+# dahua | hikvision | reolink | uniview | standalone | custom
+SYSTEM = dahua
+# Recorder address and RTSP port (not used for standalone).
+HOST = 192.168.1.100
+PORT = 554
+# Only for SYSTEM = custom. Placeholders: {channel} {channel02} {subtype} {stream} {mainsub}
+# PATH_TEMPLATE = /live/ch{channel}/{mainsub}
+USERNAME = viewer
+# main | sub
+STREAM = main
+
+CAMERAS = 4
+CAMERA_1_NAME = Front Door
+CAMERA_1_CHANNEL = 1
+CAMERA_2_NAME = Driveway
+CAMERA_2_CHANNEL = 2
+CAMERA_3_NAME = Backyard
+CAMERA_3_CHANNEL = 3
+CAMERA_4_NAME = Garage
+CAMERA_4_CHANNEL = 4
+# For SYSTEM = standalone use, per camera, instead of CHANNEL:
+# CAMERA_1_HOST = 192.168.1.21
+# CAMERA_1_BRAND = dahua | hikvision | reolink | tapo | uniview | custom
+# CAMERA_1_PATH = /stream1          (only for BRAND = custom)
+
+# primary | focused | a display name such as DISPLAY2
+MONITOR = primary
+# 480x270 | 600x338 | 720x405 | 960x540
+SIZE = 720x405
+# top-right | top-left | bottom-right | bottom-left
+ANCHOR = top-right
+
+# Keys, written like "Ctrl + Shift + -" or "Ctrl + Num *" (Num = number pad; Ctrl, Alt, Shift, Win). none = no key.
+# With an existing config that is kept, BIND_* lines (or CHANGE_KEYS = yes) replace its keys.
+BIND_TOGGLE = Ctrl + Num *
+BIND_NEXT = Num *
+BIND_PREV = Num /
+BIND_AUDIO = Ctrl + Num -
+# CHANGE_KEYS = no
+
+# Start the background daemon at sign-in (the keys need it), and add the program to the user PATH.
+AUTOSTART = yes
+ADD_TO_PATH = yes
+
+# Open the overlay once at the end to test the cameras (only happens when a password is already set).
+RUN_TEST = yes
